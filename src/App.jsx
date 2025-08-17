@@ -3,7 +3,7 @@ import Collaboration from "./sections/Collaboration";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import Pricing from "./sections/Pricing";
+import OurServices from "./sections/Service";
 import Roadmap from "./sections/Roadmap";
 import Services from "./sections/Services";
 
@@ -13,7 +13,7 @@ const App = () => {
             <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
                 <Navbar />
                 <Hero />
-                <Pricing />
+                <OurServices />
                 <Benefits />
                 <Collaboration />
                 <Services />
