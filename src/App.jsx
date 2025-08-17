@@ -1,11 +1,9 @@
-import Benefits from "./sections/Benefits";
-import Collaboration from "./sections/Collaboration";
+import Outcome from "./sections/Outcome";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
 import OurServices from "./sections/Service";
-import Roadmap from "./sections/Roadmap";
-import Services from "./sections/Services";
+import Project from "./sections/Project";
 
 const App = () => {
     return (
@@ -14,10 +12,8 @@ const App = () => {
                 <Navbar />
                 <Hero />
                 <OurServices />
-                <Benefits />
-                <Collaboration />
-                <Services />
-                <Roadmap />
+                <Outcome />
+                <Project />
                 <Footer />
             </div>
         </>
