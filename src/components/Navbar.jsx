@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-
 import { background } from "../assets";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
 import { useState, useEffect } from "react";
+
 
 const navigation = [
     {
