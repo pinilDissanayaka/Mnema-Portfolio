@@ -9,5 +9,18 @@
     <body>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>
+
+        <script>
+            window.chatBubbleConfig = {
+                agentId: "YOUR_AGENT_ID", // Replace with your actual agent ID
+                webName: "Mnema",
+                position: "bottom-right", // Place at left bottom
+                primaryColor: "#AC6AFF", // Optional: match your brand
+                title: "AI Assistant",
+                subtitle: "Online"
+            };
+        </script>
+        <script src="/chat-bubble/chat-bubble.min.js"></script>
+
     </body>
 </html>
