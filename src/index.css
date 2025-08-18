@@ -23,6 +23,17 @@ html {
     }
 }
 
+@layer utilities {
+    .nav-mobile-hidden {
+        display: none !important;
+    }
+    @media (min-width: 1024px) {
+        .nav-mobile-hidden {
+            display: flex !important;
+        }
+    }
+}
+
 .container {
     @apply max-w-[77.5rem] mx-auto px-5 md:px-10 lg:px-15 xl:max-w-[87.5rem];
 }

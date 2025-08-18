@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
 
-import { background, openai } from "../assets";
+import { background } from "../assets";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navigation = [
     {
@@ -44,6 +44,14 @@ const navigation = [
 const Header = () => {
     const pathname = useLocation();
     const [openNavigation, setOpenNavigation] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const onResize = () => setIsDesktop(window.innerWidth >= 1024);
+        onResize();
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
 
     const toggleNavigation = () => {
         if (openNavigation) {
@@ -63,23 +71,30 @@ const Header = () => {
     };
 
     return (
-        <div className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"}`}>
-            <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
+        <div
+            className={`fixed top-0 left-0 w-full z-1000 min-h-[4.75rem] border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"}`}
+            style={{ zIndex: 1000 }}
+        >
+            <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4 min-h-[4.75rem]">
                 <a className="block w-[12rem] xl:mr-8" href="#hero">
                     {/*<img src={openai} width={190} height={40} alt="OpenAI" />*/}
                     <h1>Mnema Logo</h1>
                 </a>
 
-                <nav className={`${openNavigation ? "flex" : "hidden"} fixed top-[5rem] left-0 right-0 bottom-0 bg-n-8 lg:static lg:flex lg:mx-auto lg:bg-transparent`}>
+                <nav
+                    className={`navbar-override lg:static lg:flex lg:mx-auto lg:bg-transparent ${openNavigation ? "flex" : "nav-mobile-hidden"} fixed top-[4.75rem] left-0 right-0 bottom-0 bg-n-8`}
+                    style={{ zIndex: 2000, display: isDesktop || openNavigation ? "flex" : "none" }}
+                >
                     <div className="relative z-2 flex flex-col items-center justify-center m-auto lg:flex-row">
                         {navigation.map((item) => (
                             <a
                                 key={item.id}
                                 href={item.url}
                                 onClick={handleClick}
-                                className={`block relative font-code text-2xl uppercase text-white transition-colors hover:text-color-1 ${item.onlyMobile ? "lg:hidden" : ""} px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
+                                className={`block lg:block relative font-code text-2xl uppercase text-white transition-colors hover:text-color-1 ${item.onlyMobile ? "lg:hidden" : ""} px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
                                     item.url === pathname.hash ? "z-2 lg:text-white" : "lg:text-white/50"
                                 } lg:leading-5 lg:hover:text-white xl:px-12`}
+                                style={{ visibility: "visible", opacity: 1 }}
                             >
                                 {item.title}
                             </a>
