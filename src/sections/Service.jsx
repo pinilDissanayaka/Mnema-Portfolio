@@ -15,7 +15,7 @@ const services = [
 
 const OurServices = () => {
     return (
-        <div className="overflow-hidden" id="services">
+        <div className="overflow-hidden h-screen" id="services">
             <div className="container relative z-2">
                 <div className="relative">
                     <div className="flex gap-[1rem] max-lg:flex-wrap">
